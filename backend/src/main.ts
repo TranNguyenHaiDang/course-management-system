@@ -6,6 +6,7 @@ import { AllExceptionsFilter } from './shared/filters/all-exceptions.filter';
 import { execSync } from 'child_process';
 
 function killPort(port: number) {
+  if (process.platform !== 'win32') return;
   try {
     execSync(
       `FOR /F "tokens=5" %P IN ('netstat -ano ^| findstr :${port}') DO TaskKill /PID %P /F`,
@@ -42,7 +43,7 @@ async function bootstrap() {
   app.useGlobalInterceptors(new LoggingInterceptor());
   app.useGlobalFilters(new AllExceptionsFilter());
 
-  await app.listen(port);
+  await app.listen(port, '0.0.0.0');
   console.log(`Backend server is running on: http://localhost:${port}/api`);
 }
 
