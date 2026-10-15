@@ -1,0 +1,262 @@
+{
+  "info": {
+    "_postman_id": "fd492e2b-6cd0-4388-9554-dfc27e7a219a",
+    "name": "course-management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "37421639"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"trannguyenhaidangpy@gmail.com\",\r\n    \"password\": \"devtran\",\r\n    \"fullName\": \"Trần Nguyễn Hải Đăng\",\r\n    \"phone\": \"0393509387\",\r\n    \"role\": \"STUDENT\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"admin@course.vn\",\r\n    \"password\": \"Password123!\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Course",
+      "item": [
+        {
+          "name": "Get All Courses",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/courses",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "courses"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Course",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiYWRtaW5AY291cnNlLnZuIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzkyMDcyNjkwLCJleHAiOjE3OTIwNzM1OTB9.TusChX49ZD2NQ9wSe9SiuBhHxZlBHa5WvMt_JypAPtY",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Khóa học lập trình Cloud DevOps & Kubernetes\",\r\n    \"description\": \"Làm chủ Docker, Kubernetes, CI/CD pipeline\",\r\n    \"instructor\": \"Chuyên gia Đỗ Hữu Đạt\",\r\n    \"price\": 3200000,\r\n    \"capacity\": 20,\r\n    \"category\": \"Backend\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/courses",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "courses"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Course",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiYWRtaW5AY291cnNlLnZuIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzkyMDczMTU3LCJleHAiOjE3OTIwNzQwNTd9.M8OhxrUnooAKqoirHcgg-OdzRgULrXJc5OeNEYzhI0g",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Khóa học lập trình Cloud DevOps & Kubernetes (Nâng cao)\",\r\n    \"price\": 3500000,\r\n    \"capacity\": 25\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/courses/8",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "courses",
+                "8"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Course Enrollments",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiYWRtaW5AY291cnNlLnZuIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzkyMDc0Mjc5LCJleHAiOjE3OTIwNzUxNzl9.OwozOgFgaixgflEZR_GshwjQyy2THTodCcxf3TLe44o",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/courses/5/enrollments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "courses",
+                "5",
+                "enrollments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Soft Delete Course",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiYWRtaW5AY291cnNlLnZuIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzkyMDc2NDA0LCJleHAiOjE3OTIwNzczMDR9.TYAORZwlK9cN5izq__quMlJKZnqKMlLCU8QUd9RRn4A",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/courses/6",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "courses",
+                "6"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Enrollment",
+      "item": [
+        {
+          "name": "Enroll Course",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsImVtYWlsIjoibmV3X3N0dWRlbnRfdGVzdEBjb3Vyc2Uudm4iLCJyb2xlIjoiU1RVREVOVCIsImlhdCI6MTc5MjA3Mzk2NSwiZXhwIjoxNzkyMDc0ODY1fQ.JcIEM33AlHj4cIY0s0-OFZB-K93KlH-IRd_GiDA1RpI",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"courseId\": 5\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/enrollments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "enrollments"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
